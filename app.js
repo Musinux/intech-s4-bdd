@@ -6,9 +6,6 @@ const logger = require('morgan')
 const session = require('express-session')
 const injectUser = require('./middlewares/inject-user.middleware')
 
-const articlesRouter = require('./routes/articles.route')
-const authRouter = require('./routes/auth.route')
-
 PostgresStore.init()
 .then(() => console.log('connected'))
 
@@ -26,7 +23,13 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(injectUser)
+
+const articlesRouter = require('./routes/articles.route')
+const authRouter = require('./routes/auth.route')
+const cartsRouter = require('./routes/carts.route')
+
 app.use('/api', authRouter)
 app.use('/api', articlesRouter)
+app.use('/api', cartsRouter)
 
 module.exports = app;

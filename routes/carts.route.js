@@ -13,7 +13,15 @@ router.get('/carts', async (req, res) => {
 // doit vérifier que l'utilisateur n'a pas déjà un panier non validé
 router.post('/cart', async (req, res) => {
     const hasCart = await Cart.getUserCurrentCart(req.session.userId)
-    
+    if (!hasCart) {
+        const cart = await Cart.create(req.session.userId)
+        res.json(cart)
+        return
+    }
+    res.status(401)
+    res.send({
+        message: 'You already have a cart'
+    })
 })
 
 // doit vérifier que l'utilisateur a déjà un panier
