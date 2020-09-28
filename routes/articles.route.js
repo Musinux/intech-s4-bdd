@@ -13,9 +13,9 @@ router.get('/article/:articleId', async (req, res) => {
     res.json(article)
 })
 
-router.use(hasToBeAdmin)
+// router.use(hasToBeAdmin)
 
-router.post('/article', async (req, res) => {
+router.post('/article', hasToBeAdmin, async (req, res) => {
     try {
         const article = await Article.create(req.body)
         res.json(article)
@@ -25,13 +25,13 @@ router.post('/article', async (req, res) => {
     }
 })
 
-router.put('/article/:articleId', async (req, res) => {
+router.put('/article/:articleId', hasToBeAdmin, async (req, res) => {
     const articleId = Number(req.params.articleId)
     const article = await Article.update(articleId, req.body)
     res.json(article)
 })
 
-router.delete('/article/:articleId', async (req, res) => {
+router.delete('/article/:articleId', hasToBeAdmin, async (req, res) => {
     try {
         const articleId = Number(req.params.articleId)
         await Article.delete(articleId)
