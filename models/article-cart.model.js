@@ -4,6 +4,25 @@ const PostgresStore = require('../PostgresStore')
 
 class ArticleCart {
 
+    /**
+     * @param {Number} cartId
+     * @param {Number} articleId
+     * @param {Number} quantity
+     */
+    static async updateQuantity (cartId, articleId, quantity) {
+        await PostgresStore.client.query({
+            text: `UPDATE ${ArticleCart.tableName}
+            SET quantity=$3
+            WHERE cart_id=$1 AND article_id=$2
+            RETURNING *`,
+            values: [cartId, articleId, quantity]
+        })
+    }
+
+    /**
+     * @param {Number} cartId
+     * @param {Number} articleId
+     */
     static async getByCartAndArticle (cartId, articleId) {
         const result = await PostgresStore.client.query({
             text: `SELECT * FROM ${ArticleCart.tableName}

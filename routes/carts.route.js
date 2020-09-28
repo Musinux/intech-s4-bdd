@@ -36,23 +36,16 @@ router.post('/cart/article', hasToBeAuthenticated, async (req, res) => {
     }
     // vérifier que les quantités sont correctes
     const article = await Article.getById(articleId)
-    if (!article) {
+
+    if (!article || article.stock < quantity || quantity < 0) {
         res.status(404)
         res.json({
-            message: "The article doesn't exist"
+            message: "Either The article doesn't exist or not enough stock for the asked quantity"
         })
-        return
     }
-    if (article.stock < quantity) {
-        res.status(404)
-        res.json({
-            message: "Not enough stock for the asked quantity"
-        })
-        return
-    } 
 
     // si l'article avait déjà été ajouté, alors refuser de l'ajouter
-    const articleCart = await ArticleCart.getByCartAndArticle(cart.id, article.id)
+    const articleCart = await ArticleCart.getByCartAndArticle(cart.id, articleId)
     if (articleCart) {
         res.status(401)
         res.json({
@@ -62,7 +55,7 @@ router.post('/cart/article', hasToBeAuthenticated, async (req, res) => {
     }
 
     // ajouter l'élément au panier
-    await ArticleCart.add(cart.id, article.id, quantity)
+    await ArticleCart.add(cart.id, articleId, quantity)
     // retourner ok
     res.json({
         message: 'OK'
@@ -70,12 +63,45 @@ router.post('/cart/article', hasToBeAuthenticated, async (req, res) => {
 })
 
 router.put('/cart/article/:articleId', hasToBeAuthenticated, async (req, res) => {
+    const articleId = Number(req.params.articleId)
+    const { quantity } = req.body
+    let cart = await Cart.getUserCurrentCart(req.session.userId)
+    if (!cart) {
+        res.status(404)
+        res.send({
+            message: "Can't add to a non-existent cart"
+        })
+        return
+    }
+
+    const item = await ArticleCart.getByCartAndArticle(cart.id, articleId)
+
+    if (!item) {
+        res.status(404)
+        res.send({
+            message: "Can't change quantity to inexistent article"
+        })
+        return
+    }
+    // vérifier que les quantités sont correctes
+    const article = await Article.getById(articleId)
+
+    if (!article || article.stock < quantity || quantity < 0) {
+        res.status(404)
+        res.json({
+            message: "Either The article doesn't exist or not enough stock for the asked quantity"
+        })
+    }
+
+    await ArticleCart.updateQuantity(cart.id, article.id, quantity)
+
+    res.json({
+        message: 'OK'
+    })
     // changement de quantités d'un article donné
-})
-
-// doit vérifier que l'utilisateur a déjà un panier
-router.put('/cart/:cartId', hasToBeAuthenticated, async (req, res) => {
-
+    // vérifier si on avait bien l'article dans le panier, sinon stop
+    // vérifier qu'on a assez de stock
+    // puis changer la quantité de l'article dans le panier
 })
 
 router.get('/cart/:cartId', hasToBeAuthenticated, async (req, res) => {
