@@ -29,7 +29,20 @@ class Article {
         })
         return result.rows[0]
     }
-
+    /**
+     * @param {Number} cartId
+     */
+    static async validateCart (cartId) {
+        const ArticleCart = require('./article-cart.model')
+        await PostgresStore.client.query({
+            text: `UPDATE ${Article.tableName} AS a
+            SET stock = stock - ac.quantity
+            FROM ${ArticleCart.tableName} AS ac
+            WHERE ac.article_id = a.id
+                AND ac.cart_id=$1`,
+            values: [cartId]
+        })
+    }
 
     /**
      * @param {Number} articleId

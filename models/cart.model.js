@@ -11,7 +11,6 @@ class Cart {
     /** @type {Boolean} */
     validated
 
-
     /**
      * @param {Number} userId
      * @returns {Promise<Cart>}
@@ -26,6 +25,18 @@ class Cart {
             values: [userId, new Date()]
         })
         return result.rows[0]
+    }
+
+    /**
+     * @param {Number} cartId
+     */
+    static async validate (cartId) {
+        await PostgresStore.client.query({
+            text: `UPDATE ${Cart.tableName}
+            SET validated=TRUE
+            WHERE id=$1`,
+            values: [cartId]
+        })
     }
 
     /**
