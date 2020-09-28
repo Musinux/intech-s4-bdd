@@ -1,10 +1,19 @@
 const router = require('express').Router()
 const Article = require('../models/article.model')
+const hasToBeAdmin = require('../middlewares/has-to-be-admin.middleware')
 
 router.get('/articles', async (req, res) => {
     const articles = await Article.getAll()
     res.json(articles)
 })
+
+router.get('/article/:articleId', async (req, res) => {
+    const articleId = Number(req.params.articleId)
+    const article = await Article.getById(articleId)
+    res.json(article)
+})
+
+router.use(hasToBeAdmin)
 
 router.post('/article', async (req, res) => {
     try {
@@ -19,12 +28,6 @@ router.post('/article', async (req, res) => {
 router.put('/article/:articleId', async (req, res) => {
     const articleId = Number(req.params.articleId)
     const article = await Article.update(articleId, req.body)
-    res.json(article)
-})
-
-router.get('/article/:articleId', async (req, res) => {
-    const articleId = Number(req.params.articleId)
-    const article = await Article.getById(articleId)
     res.json(article)
 })
 
