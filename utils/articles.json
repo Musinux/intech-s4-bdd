@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Clé usb",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet diam urna. Mauris id diam dapibus, pharetra urna at, cursus eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris aliquet leo purus, ut rhoncus leo tempor nec. Aliquam consectetur consectetur urna, sed posuere sapien semper non. Maecenas diam enim, cursus id elementum sit amet, pulvinar vitae metus. Aenean nisi massa, ultrices at varius non, vehicula consectetur tortor. Donec nulla risus, dapibus quis tristique eget, pharetra tristique libero. Aliquam elit magna, convallis ut leo eu, ultricies suscipit purus. Maecenas vitae eleifend quam.",
+    "stock": 6,
+    "price": 70,
+    "category_id": 3
+  },
+  {
+    "title": "Ventilateur",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet diam urna. Mauris id diam dapibus, pharetra urna at, cursus eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris aliquet leo purus, ut rhoncus leo tempor nec. Aliquam consectetur consectetur urna, sed posuere sapien semper non. Maecenas diam enim, cursus id elementum sit amet, pulvinar vitae metus. Aenean nisi massa, ultrices at varius non, vehicula consectetur tortor. Donec nulla risus, dapibus quis tristique eget, pharetra tristique libero. Aliquam elit magna, convallis ut leo eu, ultricies suscipit purus. Maecenas vitae eleifend quam.",
+    "stock": 3,
+    "price": 12,
+    "category_id": 2
+  },
+  {
+    "title": "Chaussettes",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet diam urna. Mauris id diam dapibus, pharetra urna at, cursus eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris aliquet leo purus, ut rhoncus leo tempor nec. Aliquam consectetur consectetur urna, sed posuere sapien semper non. Maecenas diam enim, cursus id elementum sit amet, pulvinar vitae metus. Aenean nisi massa, ultrices at varius non, vehicula consectetur tortor. Donec nulla risus, dapibus quis tristique eget, pharetra tristique libero. Aliquam elit magna, convallis ut leo eu, ultricies suscipit purus. Maecenas vitae eleifend quam.",
+    "stock": 76,
+    "price": 8,
+    "category_id": 3
+  },
+  {
+    "title": "Aspirateur",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet diam urna. Mauris id diam dapibus, pharetra urna at, cursus eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris aliquet leo purus, ut rhoncus leo tempor nec. Aliquam consectetur consectetur urna, sed posuere sapien semper non. Maecenas diam enim, cursus id elementum sit amet, pulvinar vitae metus. Aenean nisi massa, ultrices at varius non, vehicula consectetur tortor. Donec nulla risus, dapibus quis tristique eget, pharetra tristique libero. Aliquam elit magna, convallis ut leo eu, ultricies suscipit purus. Maecenas vitae eleifend quam.",
+    "stock": 89,
+    "price": 83,
+    "category_id": 2
+  },
+  {
+    "title": "Casserole",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet diam urna. Mauris id diam dapibus, pharetra urna at, cursus eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris aliquet leo purus, ut rhoncus leo tempor nec. Aliquam consectetur consectetur urna, sed posuere sapien semper non. Maecenas diam enim, cursus id elementum sit amet, pulvinar vitae metus. Aenean nisi massa, ultrices at varius non, vehicula consectetur tortor. Donec nulla risus, dapibus quis tristique eget, pharetra tristique libero. Aliquam elit magna, convallis ut leo eu, ultricies suscipit purus. Maecenas vitae eleifend quam.",
+    "stock": 58,
+    "price": 86,
+    "category_id": 3
+  },
+  {
+    "title": "Carte graphique",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet diam urna. Mauris id diam dapibus, pharetra urna at, cursus eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris aliquet leo purus, ut rhoncus leo tempor nec. Aliquam consectetur consectetur urna, sed posuere sapien semper non. Maecenas diam enim, cursus id elementum sit amet, pulvinar vitae metus. Aenean nisi massa, ultrices at varius non, vehicula consectetur tortor. Donec nulla risus, dapibus quis tristique eget, pharetra tristique libero. Aliquam elit magna, convallis ut leo eu, ultricies suscipit purus. Maecenas vitae eleifend quam.",
+    "stock": 79,
+    "price": 57,
+    "category_id": 1
+  },
+  {
+    "title": "Cartable",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet diam urna. Mauris id diam dapibus, pharetra urna at, cursus eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris aliquet leo purus, ut rhoncus leo tempor nec. Aliquam consectetur consectetur urna, sed posuere sapien semper non. Maecenas diam enim, cursus id elementum sit amet, pulvinar vitae metus. Aenean nisi massa, ultrices at varius non, vehicula consectetur tortor. Donec nulla risus, dapibus quis tristique eget, pharetra tristique libero. Aliquam elit magna, convallis ut leo eu, ultricies suscipit purus. Maecenas vitae eleifend quam.",
+    "stock": 76,
+    "price": 95,
+    "category_id": 2
+  },
+  {
+    "title": "Stylo Plume",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet diam urna. Mauris id diam dapibus, pharetra urna at, cursus eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris aliquet leo purus, ut rhoncus leo tempor nec. Aliquam consectetur consectetur urna, sed posuere sapien semper non. Maecenas diam enim, cursus id elementum sit amet, pulvinar vitae metus. Aenean nisi massa, ultrices at varius non, vehicula consectetur tortor. Donec nulla risus, dapibus quis tristique eget, pharetra tristique libero. Aliquam elit magna, convallis ut leo eu, ultricies suscipit purus. Maecenas vitae eleifend quam.",
+    "stock": 19,
+    "price": 19,
+    "category_id": 1
+  }
+]

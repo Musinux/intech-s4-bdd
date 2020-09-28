@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "checkJs": true,
+      "resolveJsonModule": true
+    },
+    "exclude": ["node_modules"]
+}
