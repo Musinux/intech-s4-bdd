@@ -1,7 +1,33 @@
 const Cart = require('./cart.model')
 const Article = require('./article.model')
+const PostgresStore = require('../PostgresStore')
 
 class ArticleCart {
+
+    static async getByCartAndArticle (cartId, articleId) {
+        const result = await PostgresStore.client.query({
+            text: `SELECT * FROM ${ArticleCart.tableName}
+            WHERE cart_id=$1 AND article_id=$2`,
+            values: [cartId, articleId]
+        })
+
+        return result.rows[0]
+    }
+
+    /**
+     * @param {Number} cartId
+     * @param {Number} articleId
+     * @param {Number} quantity
+     */
+    static async add (cartId, articleId, quantity) {
+        await PostgresStore.client.query({
+            text: `INSERT INTO ${ArticleCart.tableName}
+            (cart_id, article_id, creation_date, quantity)
+            VALUES ($1, $2, $3, $4)`,
+            values: [cartId, articleId, new Date(), quantity]
+        })
+    }
+
     static toSQLTable () {
         return `
             CREATE TABLE ${ArticleCart.tableName} (

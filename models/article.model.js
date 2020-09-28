@@ -17,6 +17,7 @@ class Article {
 
     /**
      * @param {Article} article
+     * @returns {Promise<Article>}
      */
     static async create (article) {
         const result = await PostgresStore.client.query({

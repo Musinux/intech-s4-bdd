@@ -1,4 +1,5 @@
 const PostgresStore = require("../PostgresStore")
+const bcrypt = require('bcrypt')
 
 class User {
     /** @type {Number} */
@@ -29,14 +30,13 @@ class User {
 
     /**
      * @param {String} email
-     * @param {String} password
      * @returns {Promise<User>}
      */
-    static async findByEmailAndPassword (email, password) {
+    static async findByEmail (email) {
         const result = await PostgresStore.client.query({
             text: `SELECT * FROM ${User.tableName}
-            WHERE email=$1 AND password=$2`,
-            values: [email, password]
+            WHERE email=$1`,
+            values: [email]
         })
         return result.rows[0]
     }
@@ -45,12 +45,14 @@ class User {
      * @param {User} user
      */
     static async create (user) {
+        const hashedPw = await bcrypt.hash(user.password, 10)
+
         await PostgresStore.client.query({
             text: `
             INSERT INTO ${User.tableName} 
                    (firstname, lastname, email, password, is_admin)
             VALUES ($1,        $2,       $3,    $4,       $5)`,
-            values: [user.firstname, user.lastname, user.email, user.password, user.is_admin]
+            values: [user.firstname, user.lastname, user.email, hashedPw, user.is_admin]
         })
     }
 

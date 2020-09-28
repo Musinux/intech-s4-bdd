@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const User = require('../models/user.model')
 const hasToBeAuthenticated = require('../middlewares/has-to-be-authenticated.middleware')
+const bcrypt = require('bcrypt')
 
 function shouldntBeAuthenticated (req, res, next) {
     if (req.session.userId) {
@@ -21,10 +22,10 @@ router.get('/me', hasToBeAuthenticated, async (req, res) => {
 
 router.post('/login', shouldntBeAuthenticated, async (req, res) => {
     const { email, password } = req.body
-    /* SIMILAIRE À: const email = req.body.email
-    const password = req.body.password */
-    const user = await User.findByEmailAndPassword(email, password)
-    if (!user) {
+    
+    const user = await User.findByEmail(email)
+
+    if (!user || !(await bcrypt.compare(password, user.password))) {
         res.status(401)
         res.send({
             message: 'Did not find any couple matching email and password'
