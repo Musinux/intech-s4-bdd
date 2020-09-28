@@ -1,11 +1,11 @@
 const categories = [{
-    id: 0,
+    id: 1,
     name: 'Catégorie 1'
 }, {
-    id: 1,
+    id: 2,
     name: 'Catégorie 2'
 }, {
-    id: 2,
+    id: 3,
     name: 'Catégorie 3'
 }]
 

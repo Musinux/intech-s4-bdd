@@ -1,6 +1,21 @@
 const User = require('./user.model')
+const PostgresStore = require('../PostgresStore')
 
 class Cart {
+
+    /**
+     * @param {Number} userId
+     * @returns {Promise<Cart[]>}
+     */
+    static async getByUserId (userId) {
+        const result = await PostgresStore.client.query({
+            text: `SELECT * FROM ${Cart.tableName}
+            WHERE user_id=$1`,
+            values: [userId]
+        })
+        return result.rows
+    }
+
     static toSQLTable () {
         return `
             CREATE TABLE ${Cart.tableName} (

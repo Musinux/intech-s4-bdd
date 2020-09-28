@@ -1,14 +1,19 @@
 const router = require('express').Router()
-const Article = require('../models/article.model')
+const Cart = require('../models/cart.model')
+const hasToBeAuthenticated = require('../middlewares/has-to-be-authenticated.middleware')
+
+router.use(hasToBeAuthenticated)
 
 // ne retourne que les paniers liés à l'utilisateur en cours
 router.get('/carts', async (req, res) => {
-
+    const carts = await Cart.getByUserId(req.session.userId)
+    res.json(carts)
 })
 
 // doit vérifier que l'utilisateur n'a pas déjà un panier non validé
 router.post('/cart', async (req, res) => {
-
+    const hasCart = await Cart.getUserCurrentCart(req.session.userId)
+    
 })
 
 // doit vérifier que l'utilisateur a déjà un panier

@@ -26,7 +26,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(injectUser)
-app.use('/', authRouter)
+app.use('/api', authRouter)
 app.use('/api', articlesRouter)
 
 module.exports = app;
